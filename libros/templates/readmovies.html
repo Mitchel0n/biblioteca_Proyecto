@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agregar una pelicula</title>
+
+</head>
+<body>
+    <h1>Lista de peliculas</h1>
+    {% for pelicula in peliculas %}
+        <p> - - - - - - - - - - - - - </p>
+        <p><strong>Título:</strong> {{ pelicula.titulo }}</p>
+        <p><strong>Director:</strong> {{ pelicula.director }}</p>
+        <p><strong>Fecha de lanzamiento:</strong> {{ pelicula.fechalanzamiento }}</p>
+        <p><strong>Genero:</strong> {{ pelicula.genero }}</p>
+    {% endfor %}
+
+    <p> - - - - - - - - - - - - - </p>
+<table>
+    <tr>
+        <th>Peliculas favoritas (Titulo)</th>
+    </tr>
+    {% for pelicula in peliculas %}
+    <tr>
+        <td>{{ pelicula.titulo }}</td>
+        <td>
+            <a href="{% url 'update_movies' pelicula.id %}">Editar</a>
+            <a href="{% url 'delete_movies' pelicula.id %}">Eliminar</a>
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+
+<a href="/">Volver a agregar una pelicula</a>
+</body>
+</html>
